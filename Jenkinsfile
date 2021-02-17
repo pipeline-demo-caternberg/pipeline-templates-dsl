@@ -24,14 +24,7 @@ pipeline {
         command:
         - cat
         tty: true
-        volumeMounts:
-         - name: maven-cache
-           mountPath: /cache
-      volumes:
-      - name: maven-cache
-        persistentVolumeClaim:
-          claimName: maven-repo
-          """
+       """
         }
     }
     stages {
@@ -41,8 +34,7 @@ pipeline {
                         jobDsl targets: ['Seed.groovy'].join('\n'),
                                 removedJobAction: 'DELETE',
                                 removedViewAction: 'DELETE',
-                                lookupStrategy: 'SEED_JOB',
-                              //  additionalParameters: [credentials: "${GH_ACCESS_TOKEN}"]
+                                lookupStrategy: 'SEED_JOB']
                     }
 
             }
