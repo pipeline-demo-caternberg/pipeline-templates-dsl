@@ -1,12 +1,14 @@
 pipeline {
     agent {
         kubernetes {
+            label 'seedPT'
+            defaultContainer 'maven'
             yaml """
     apiVersion: v1
     kind: Pod
     metadata:
       labels:
-        some-label: some-label-value
+        some-label: seedPT
     spec:
       containers:
       - name: maven-one
@@ -22,7 +24,13 @@ pipeline {
         command:
         - cat
         tty: true
-       
+        volumeMounts:
+         - name: maven-cache
+           mountPath: /cache
+      volumes:
+      - name: maven-cache
+        persistentVolumeClaim:
+          claimName: maven-repo
           """
         }
     }
