@@ -73,15 +73,12 @@ multibranchPipelineJob('PT-Instance-seed-by-dsl') {
 
         }
 
-        /*  project.remove(project / 'triggers')
-          {
-              'com.cloudbees.hudson.plugins.folder.computed.PeriodicFolderTrigger'(plugin: 'cloudbees-folder@6.15')
-              {
-                              'spec'('H H/4 * * *')
-                              'interval'('86400000')
-               }
-          }
-         */
+        // project.remove(project / 'triggers')
+        project / 'triggers' << 'com.cloudbees.hudson.plugins.folder.computed.PeriodicFolderTrigger'(plugin: 'cloudbees-folder@6.15'){
+            'spec'('H H/4 * * *'){}
+            'interval'('86400000'){}
+        }
+
         project.remove(project / healthMetrics)
         project << healthMetrics {
             'com.cloudbees.hudson.plugins.folder.health.WorstChildHealthMetric'(plugin: 'cloudbees-folder@6.15')
