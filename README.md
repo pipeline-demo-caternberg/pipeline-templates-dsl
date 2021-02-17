@@ -1,6 +1,6 @@
 # pipeline-templates-dsl
 
-generates an instance of a (dedicated) [CloudBees Pipeline Template Catalog](https://docs.cloudbees.com/docs/admin-resources/latest/pipeline-templates-user-guide/)by using JOB-DSL
+generates an instance of a (dedicated) [CloudBees Pipeline Template Catalog](https://docs.cloudbees.com/docs/admin-resources/latest/pipeline-templates-user-guide/) by using JOB-DSL
 
 
 
