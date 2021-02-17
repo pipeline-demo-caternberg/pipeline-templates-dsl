@@ -1,5 +1,4 @@
-multibranchPipelineJob('configuration-as-code') {
-
+multibranchPipelineJob('PT-Instance-seed-by-dsl') {
     configure { project ->
         project / 'properties' / 'com.cloudbees.pipeline.governance.templates.classic.multibranch.GovernanceMultibranchPipelinePropertyImpl'(plugin: "cloudbees-workflow-template@3.12") << 'instance' {
             'model'('Pipeline-Tem.c3qk18.log-Examples/gitHubOrganisationPipeline')
@@ -26,7 +25,6 @@ multibranchPipelineJob('configuration-as-code') {
         project << 'folderViews'(class: 'jenkins.branch.MultiBranchProjectViewHolder', plugin: 'branch-api@2.6.2') {
             'owner'(class: 'org.jenkinsci.plugins.workflow.multibranch.WorkflowMultiBranchProject', reference: '../..') {}
         }
-
         project.remove(project / sources)
         project / sources {
             'jenkins.branch.BranchSource'(plugin: 'branch-api@2.6.2')
@@ -54,10 +52,8 @@ multibranchPipelineJob('configuration-as-code') {
 
                                                 }
                                     }
-
                                 }
                     }
-
         }
 
         project.remove(project / orphanedItemStrategy)
@@ -83,12 +79,9 @@ multibranchPipelineJob('configuration-as-code') {
               {
                               'spec'('H H/4 * * *')
                               'interval'('86400000')
-
                }
           }
-
          */
-
         project.remove(project / healthMetrics)
         project << healthMetrics {
             'com.cloudbees.hudson.plugins.folder.health.WorstChildHealthMetric'(plugin: 'cloudbees-folder@6.15')
@@ -97,15 +90,5 @@ multibranchPipelineJob('configuration-as-code') {
                     }
             'com.cloudbees.hudson.plugins.folder.health.AverageChildHealthMetric'(plugin: 'cloudbees-folders-plus@3.10')
         }
-
-
     }
-
-
-    /* branchSources {
-         git {
-             id = 'configuration-as-code'
-             remote('https://github.com/jenkinsci/configuration-as-code-plugin.git')
-         }
-     }*/
 }
