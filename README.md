@@ -7,6 +7,8 @@ generates an instance of a (dedicated) [CloudBees Pipeline Template Catalog](htt
 # Pre-requirements
 * CloudBees CI Controller
 * Add [this Pipeline Templateb Catalog](https://github.com/pipeline-demo-caternberg/pipeline-examples) to your controller
+
+# Start 
 * Create a PipelineJob with this repo as a SCM source
   * You will fail during the first run because script approval will block
   * approve the script under manage Jenkins -> script approvals and run again
