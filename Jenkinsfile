@@ -34,7 +34,7 @@ pipeline {
                         jobDsl targets: ['Seed.groovy'].join('\n'),
                                 removedJobAction: 'DELETE',
                                 removedViewAction: 'DELETE',
-                                lookupStrategy: 'SEED_JOB']
+                                lookupStrategy: 'SEED_JOB'
                     }
 
             }
