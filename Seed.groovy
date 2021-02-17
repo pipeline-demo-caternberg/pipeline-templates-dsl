@@ -1,7 +1,7 @@
 multibranchPipelineJob('PT-Instance-seed-by-dsl') {
     configure { project ->
         project / 'properties' / 'com.cloudbees.pipeline.governance.templates.classic.multibranch.GovernanceMultibranchPipelinePropertyImpl'(plugin: "cloudbees-workflow-template@3.12") << 'instance' {
-            'model'('Pipeline-Tem.c3qk18.log-Examples/gitHubOrganisationPipeline')
+            'model'('Pipeline-Tem.c3qk18.log-Examples/multibranchPipeline')
             'values'(class: 'tree-map') {
                 'entry' {
                     'string'("githubToken") {}
