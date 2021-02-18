@@ -2,8 +2,6 @@
 def myJobName = "PT-Instance-seed-by-dsl"
 //default catalogName, see catalog.yaml of the PT catalog
 def catalog = "Pipeline Template Catalog Examples"
-//Name of MB Pipli
-def mbPipelineName ='maven-example'
 //The the GH org to scan
 def ghOrganisation ='pipeline-demo-caternberg'
 //THe GH repo within the GHorg to scan
@@ -15,6 +13,9 @@ def templateDir = "multibranchPipeline"
 //link to the PT catalog defined in Jenkins
 def ptModel = 'Pipeline-Tem.c3qk18.log-Examples/multibranchPipeline'
 
+//Name of MB Pipli  -> dev/null?
+//def mbPipelineName ='maven-example'
+
 for (number in 1..3 ) {
     multibranchPipelineJob(myJobName + "_" + number) {
         configure { project ->
@@ -24,10 +25,6 @@ for (number in 1..3 ) {
                     'entry' {
                         'string'("githubToken")
                         'string'("githubuseraccesstoken")
-                    }
-                    'entry' {
-                        'string'("name")
-                        'string'(mbPipelineName)
                     }
                     'entry' {
                         'string'("organsisation")
