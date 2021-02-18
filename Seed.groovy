@@ -1,10 +1,10 @@
-String catalogName = 'Pipeline Template Catalog Examples'
-String mbPipelineName ='maven-example'
-String ghOrganisationToScan ='pipeline-demo-caternberg'
-String ghRepoToScan ='maven-executable-jar-example'
-String markerFile ='pom.xml'
-String templateDirectory ='multibranchPipeline'
-String model = 'Pipeline-Tem.c3qk18.log-Examples/multibranchPipeline'
+String catalogName = "Pipeline Template Catalog Examples"
+String mbPipelineName = "maven-example"
+String ghOrganisationToScan = "pipeline-demo-caternberg"
+String ghRepoToScan = "maven-executable-jar-example"
+String markerFile = "pom.xml"
+String templateDirectory = "multibranchPipeline"
+String model = "Pipeline-Tem.c3qk18.log-Examples/multibranchPipeline"
 
 multibranchPipelineJob('PT-Instance-seed-by-dsl') {
     configure { project ->
