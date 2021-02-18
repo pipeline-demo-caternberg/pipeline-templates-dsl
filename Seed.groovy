@@ -14,7 +14,7 @@ def ghOrganisationToScan = "pipeline-demo-caternberg"
 def ghRepoToScan = "maven-executable-jar-example"
 def markerFile = "pom.xml"
 def templateDirectory = "multibranchPipeline"
-def model = "Pipeline-Tem.c3qk18.log-Examples/multibranchPipeline"
+//def model = "Pipeline-Tem.c3qk18.log-Examples/multibranchPipeline"
 
 multibranchPipelineJob('PT-Instance-seed-by-dsl') {
     println "${test}"
