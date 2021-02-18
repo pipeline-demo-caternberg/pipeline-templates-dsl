@@ -1,16 +1,22 @@
-
+//jobName: The name of the generated Job in Jenkins
 def myJobName = "PT-Instance-seed-by-dsl"
+//default catalogName, see catalog.yaml of the PT catalog
 def catalog = "Pipeline Template Catalog Examples"
+//Name of MB Pipli
 def mbPipelineName ='maven-example'
+//The the GH org to scan
 def ghOrganisation ='pipeline-demo-caternberg'
+//THe GH repo within the GHorg to scan
 def ghRepo ='maven-executable-jar-example'
+//MarkerFile, see template.yaml of PT catalog
 def marker ='pom.xml'
+//name of the template sub-dir within the PT repo
 def templateDir = "multibranchPipeline"
+//link to the PT catalog defined in Jenkins
 def ptModel = 'Pipeline-Tem.c3qk18.log-Examples/multibranchPipeline'
 
 for (number in 1..3 ) {
     multibranchPipelineJob(myJobName + "_" + number) {
-
         configure { project ->
             project / 'properties' / 'com.cloudbees.pipeline.governance.templates.classic.multibranch.GovernanceMultibranchPipelinePropertyImpl'(plugin: "cloudbees-workflow-template@3.12") << 'instance' {
                 'model'(ptModel)
