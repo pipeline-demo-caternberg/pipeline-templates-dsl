@@ -1,42 +1,33 @@
-// https://mvnrepository.com/artifact/org.kohsuke/github-api
-@Grapes(
-        @Grab(group='org.kohsuke', module='github-api', version='1.108')
-)
 
-import org.kohsuke.github.*
-import hudson.*
-import org.apache.commons.io.FilenameUtils;
-
-def test = "teststring"
-def catalogName = "Pipeline Template Catalog Examples"
-def mbPipelineName = "maven-example"
-def ghOrganisationToScan = "pipeline-demo-caternberg"
-def ghRepoToScan = "maven-executable-jar-example"
-def markerFile = "pom.xml"
-def templateDirectory = "multibranchPipeline"
-//def model = "Pipeline-Tem.c3qk18.log-Examples/multibranchPipeline"
+def catalog = "Pipeline Template Catalog Examples"
+def mbPipelineName ='maven-example'
+def ghOrganisation ='pipeline-demo-caternberg'
+def ghRepo ='maven-executable-jar-example'
+def marker ='pom.xml'
+def templateDir = "multibranchPipeline"
+def ptModel = 'Pipeline-Tem.c3qk18.log-Examples/multibranchPipeline'
 
 multibranchPipelineJob('PT-Instance-seed-by-dsl') {
-    println "${test}"
+
     configure { project ->
         project / 'properties' / 'com.cloudbees.pipeline.governance.templates.classic.multibranch.GovernanceMultibranchPipelinePropertyImpl'(plugin: "cloudbees-workflow-template@3.12") << 'instance' {
-            'model'('Pipeline-Tem.c3qk18.log-Examples/multibranchPipeline')
+            'model'(ptModel)
             'values'(class: 'tree-map') {
                 'entry' {
-                    'string'("githubToken") {}
-                    'string'("githubuseraccesstoken") {}
+                    'string'("githubToken")
+                    'string'("githubuseraccesstoken")
                 }
                 'entry' {
-                    'string'("name") {}
-                    'string'("maven-example") {}
+                    'string'("name")
+                    'string'(mbPipelineName)
                 }
                 'entry' {
-                    'string'("organsisation") {}
-                    'string'("pipeline-demo-caternberg") {}
+                    'string'("organsisation")
+                    'string'(ghOrganisation)
                 }
                 'entry' {
-                    'string'("repoName") {}
-                    'string'("maven-executable-jar-example") {}
+                    'string'("repoName")
+                    'string'(ghRepo)
                 }
             }
         }
@@ -53,8 +44,8 @@ multibranchPipelineJob('PT-Instance-seed-by-dsl') {
                                     'id'('1234556')
                                     'apiUri'('https://api.github.com')
                                     'credentialsId'('githubuseraccesstoken')
-                                    'repoOwner'('pipeline-demo-caternberg')
-                                    'repository'('maven-executable-jar-example')
+                                    'repoOwner'(ghOrganisation)
+                                    'repository'(ghRepo)
                                     'traits' {
                                         'org.jenkinsci.plugins.github__branch__source.BranchDiscoveryTrait'
                                                 {
@@ -77,18 +68,18 @@ multibranchPipelineJob('PT-Instance-seed-by-dsl') {
 
         project.remove(project / orphanedItemStrategy)
         project << orphanedItemStrategy(class: 'com.cloudbees.hudson.plugins.folder.computed.DefaultOrphanedItemStrategy', plugin: 'cloudbees-folder@6.15') {
-            'pruneDeadBranches'('true') {}
-            'daysToKeep'('-1') {}
-            'numToKeep'('-1') {}
+            'pruneDeadBranches'('true')
+            'daysToKeep'(-1)
+            'numToKeep'(-1)
 
         }
 
         project.remove(project / factory)
         project << 'factory'(class: 'com.cloudbees.pipeline.governance.templates.classic.multibranch.FromTemplateBranchProjectFactory', plugin: 'cloudbees-workflow-template@3.12') {
             'owner'(class: 'org.jenkinsci.plugins.workflow.multibranch.WorkflowMultiBranchProject', reference: '../..') {}
-            'catalogName'('Pipeline Template Catalog Examples') {}
-            'templateDirectory'('gitHubOrganisationPipeline') {}
-            'markerFile'('pom.xml') {}
+            'catalogName'(catalog)
+            'templateDirectory'(templateDir)
+            'markerFile'(marker)
 
         }
 
