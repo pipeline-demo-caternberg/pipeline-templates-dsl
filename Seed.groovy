@@ -85,7 +85,6 @@ for (number in 1..3 ) {
                 'catalogName'(catalog)
                 'templateDirectory'(templateDir)
                 'markerFile'(marker)
-
             }
 
             // project.remove(project / 'triggers')
