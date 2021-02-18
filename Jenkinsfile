@@ -7,15 +7,18 @@ pipeline {
     apiVersion: v1
     kind: Pod
     metadata:
-      labels:
-        some-label: seedPT
+      name: cloudbees-core
     spec:
       containers:
-      - name: maven-one
-        image: maven:3.3.9-jdk-8-alpine
-        command:
-        - cat
-        tty: true    
+        - name: gradle
+          image: gradle
+          runAsUser: 1000
+          command:
+            - cat
+          tty: true
+          workingDir: "/home/jenkins/agent"
+          securityContext:
+            runAsUser: 1000
        """
         }
     }
