@@ -17,7 +17,7 @@ def templateDir = "multibranchPipeline"
 def ptModel = 'Pipeline-Tem.c3qk18.log-Examples/multibranchPipeline'
 
 //for (number in 1..3 ) {
-for (ghRepo in ghRepos)
+for (ghRepo in ghRepos) {
     multibranchPipelineJob(myJobName + "_" + number) {
         configure { project ->
             project / 'properties' / 'com.cloudbees.pipeline.governance.templates.classic.multibranch.GovernanceMultibranchPipelinePropertyImpl'(plugin: "cloudbees-workflow-template@3.12") << 'instance' {
