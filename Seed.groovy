@@ -19,7 +19,7 @@ def ptModel = 'Pipeline-Tem.c3qk18.log-Examples/multibranchPipeline'
 
 
 //Loop over repos
-["spring-boot-demo","maven-executable-jar-example"].each {
+["spring-boot-demo","maven-executable-jar-example"].each { ghRepo ->
     multibranchPipelineJob(myJobName + "_" + ghRepo) {
         configure { project ->
             project / 'properties' / 'com.cloudbees.pipeline.governance.templates.classic.multibranch.GovernanceMultibranchPipelinePropertyImpl'(plugin: "cloudbees-workflow-template@3.12") << 'instance' {
