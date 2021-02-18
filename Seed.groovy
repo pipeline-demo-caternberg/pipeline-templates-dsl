@@ -1,5 +1,5 @@
 //jobName: The name of the generated Job in Jenkins
-def myJobName = "PT-Instance-seed-by-dsl"
+def myJobName = "PT-by-dsl"
 //default catalogName, see catalog.yaml of the PT catalog
 def catalog = "Pipeline Template Catalog Examples"
 //The the GH org to scan
@@ -18,7 +18,7 @@ def ptModel = 'Pipeline-Tem.c3qk18.log-Examples/multibranchPipeline'
 
 //for (number in 1..3 ) {
 for (ghRepo in ghRepos) {
-    multibranchPipelineJob(myJobName + "_" + number) {
+    multibranchPipelineJob(myJobName + "_" + ghRepo) {
         configure { project ->
             project / 'properties' / 'com.cloudbees.pipeline.governance.templates.classic.multibranch.GovernanceMultibranchPipelinePropertyImpl'(plugin: "cloudbees-workflow-template@3.12") << 'instance' {
                 'model'(ptModel)
