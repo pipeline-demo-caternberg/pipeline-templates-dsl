@@ -25,7 +25,7 @@ pipeline {
     stages {
         stage('SeedPT') {
             steps {
-                container('maven') {
+                container('gradle') {
                         jobDsl targets: ['Seed.groovy'].join('\n'),
                                 removedJobAction: 'DELETE',
                                 removedViewAction: 'DELETE',
