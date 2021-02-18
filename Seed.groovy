@@ -5,18 +5,21 @@ def catalog = "Pipeline Template Catalog Examples"
 def ghOrganisation = 'pipeline-demo-caternberg'
 //jobName: The name of the generated Job in Jenkins
 def myJobName = "PT-by-dsl"
-//THe GH repo within the GHorg to scan
-//def ghRepo = 'maven-executable-jar-example'
-//add more or scan via GHRestAPI for all repos
-def ghRepos=["maven-executable-jar-example","spring-boot-demo"]
-
 //MarkerFile, see template.yaml of PT catalog
 def marker = 'pom.xml'
 //name of the template sub-dir within the PT repo
 def templateDir = "multibranchPipeline"
 //link to the PT catalog defined in Jenkins
 def ptModel = 'Pipeline-Tem.c3qk18.log-Examples/multibranchPipeline'
-for (ghRepo in ghRepos) {
+
+//THe GH repo within the GHorg to scan
+//def ghRepo = 'maven-executable-jar-example'
+//add more or scan via GHRestAPI for all repos
+//def ghRepos=["maven-executable-jar-example","spring-boot-demo"]
+
+
+//Loop over repos
+["spring-boot-demo","maven-executable-jar-example"].each {
     multibranchPipelineJob(myJobName + "_" + ghRepo) {
         configure { project ->
             project / 'properties' / 'com.cloudbees.pipeline.governance.templates.classic.multibranch.GovernanceMultibranchPipelinePropertyImpl'(plugin: "cloudbees-workflow-template@3.12") << 'instance' {
