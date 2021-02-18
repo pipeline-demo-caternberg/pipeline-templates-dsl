@@ -8,13 +8,13 @@ import hudson.*
 import org.apache.commons.io.FilenameUtils;
 
 def test = "teststring"
-String catalogName = "Pipeline Template Catalog Examples"
-String mbPipelineName = "maven-example"
-String ghOrganisationToScan = "pipeline-demo-caternberg"
-String ghRepoToScan = "maven-executable-jar-example"
-String markerFile = "pom.xml"
-String templateDirectory = "multibranchPipeline"
-String model = "Pipeline-Tem.c3qk18.log-Examples/multibranchPipeline"
+def catalogName = "Pipeline Template Catalog Examples"
+def mbPipelineName = "maven-example"
+def ghOrganisationToScan = "pipeline-demo-caternberg"
+def ghRepoToScan = "maven-executable-jar-example"
+def markerFile = "pom.xml"
+def templateDirectory = "multibranchPipeline"
+def model = "Pipeline-Tem.c3qk18.log-Examples/multibranchPipeline"
 
 multibranchPipelineJob('PT-Instance-seed-by-dsl') {
     println "${test}"
