@@ -12,13 +12,6 @@ def templateDir = "multibranchPipeline"
 //link to the PT catalog defined in Jenkins
 def ptModel = 'Pipeline-Tem.c3qk18.log-Examples/multibranchPipeline'
 
-//THe GH repo within the GHorg to scan
-//def ghRepo = 'maven-executable-jar-example'
-//add more or scan via GHRestAPI for all repos
-//def ghRepos=["maven-executable-jar-example","spring-boot-demo"]
-
-
-//Loop over repos
 ["spring-boot-demo","maven-executable-jar-example"].each { ghRepo ->
     multibranchPipelineJob(myJobName + "_" + ghRepo) {
         configure { project ->
