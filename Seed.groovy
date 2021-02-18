@@ -68,7 +68,7 @@ multibranchPipelineJob('PT-Instance-seed-by-dsl') {
         project << 'factory'(class: 'com.cloudbees.pipeline.governance.templates.classic.multibranch.FromTemplateBranchProjectFactory', plugin: 'cloudbees-workflow-template@3.12') {
             'owner'(class: 'org.jenkinsci.plugins.workflow.multibranch.WorkflowMultiBranchProject', reference: '../..') {}
             'catalogName'('Pipeline Template Catalog Examples') {}
-            'templateDirectory'('gitHubOrganisationPipeline') {}
+            'templateDirectory'('multibranchPipeline') {}
             'markerFile'('pom.xml') {}
 
         }
