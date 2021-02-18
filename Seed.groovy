@@ -86,7 +86,6 @@ for (ghRepo in ghRepos)
                 'catalogName'(catalog)
                 'templateDirectory'(templateDir)
                 'markerFile'(marker)
-
             }
 
             // project.remove(project / 'triggers')
