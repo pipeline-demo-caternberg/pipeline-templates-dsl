@@ -7,7 +7,7 @@ import org.kohsuke.github.*
 import hudson.*
 import org.apache.commons.io.FilenameUtils;
 
-
+def test = "teststring"
 String catalogName = "Pipeline Template Catalog Examples"
 String mbPipelineName = "maven-example"
 String ghOrganisationToScan = "pipeline-demo-caternberg"
@@ -17,6 +17,7 @@ String templateDirectory = "multibranchPipeline"
 String model = "Pipeline-Tem.c3qk18.log-Examples/multibranchPipeline"
 
 multibranchPipelineJob('PT-Instance-seed-by-dsl') {
+    println "${test}"
     configure { project ->
         project / 'properties' / 'com.cloudbees.pipeline.governance.templates.classic.multibranch.GovernanceMultibranchPipelinePropertyImpl'(plugin: "cloudbees-workflow-template@3.12") << 'instance' {
             'model'("Pipeline-Tem.c3qk18.log-Examples/multibranchPipeline")
