@@ -7,7 +7,7 @@ generates an instance of a (dedicated) [CloudBees Pipeline Template Catalog](htt
 # Pre-requirements
 * CloudBees CI Controller
 * Install the [job-dsl plugin](https://github.com/jenkinsci/job-dsl-plugin) 
-* Add [this Pipeline Templateb Catalog](https://github.com/pipeline-demo-caternberg/pipeline-examples) to your controller
+* Add [this Pipeline Templateb Catalog](https://github.com/pipeline-demo-caternberg/pipeline-examples/tree/master/templates) to your controller
 
 # Start 
 * Create a PipelineJob with this repo as a SCM source
